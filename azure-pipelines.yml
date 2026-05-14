@@ -2,10 +2,15 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: MyLocalPool
 
 steps:
+
+- checkout: self
+  displayName: 'Checkout Source Code'
+
 - task: Maven@4
+  displayName: 'Build Maven Project'
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'clean package'
@@ -14,3 +19,10 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.17'
     mavenVersionOption: 'Default'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Build Artifacts'
+  inputs:
+    PathtoPublish: 'target'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
