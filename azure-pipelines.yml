@@ -17,7 +17,7 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'Path'
-    jdkDirectory: 'C:\Program Files\Java\jdk-17'
+    jdkDirectory: 'C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot'
     mavenVersionOption: 'Default'
 
 - task: PublishBuildArtifacts@1
